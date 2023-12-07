@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../config/router/router_names.dart';
 
 class ThirdPage extends ConsumerWidget {
   const ThirdPage({Key? key}) : super(key: key);
@@ -17,7 +20,13 @@ class ThirdPage extends ConsumerWidget {
             const Text('Third Page'),
             const SizedBox(height: 10),
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).goNamed(
+                  RouterNames.thirdDetails,
+                  pathParameters: {'id': '2'},
+                  queryParameters: {'firstName': 'John'},
+                );
+              },
               child: const Text('View Third Details'),
             ),
             const SizedBox(height: 10),
