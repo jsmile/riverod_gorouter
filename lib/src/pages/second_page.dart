@@ -26,6 +26,13 @@ class SecondPage extends StatelessWidget {
               },
               child: const Text('View Second Details'),
             ),
+            const SizedBox(height: 10),
+            OutlinedButton(
+              onPressed: () {
+                context.go('/nowhere');
+              },
+              child: const Text('No Where'),
+            )
           ],
         ),
       ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../config/router/router_names.dart';
 
 class PageNotFound extends StatelessWidget {
   final String errMsg;
@@ -28,7 +31,9 @@ class PageNotFound extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.goNamed(RouterNames.first);
+                },
                 child: const Text('Go to First'),
               ),
             ],

@@ -41,7 +41,7 @@ class SignupPage extends ConsumerWidget {
             const SizedBox(height: 20.0),
             OutlinedButton(
               onPressed: () {
-                context.goNamed(RouterNames.noWhere);
+                context.go('/noWhere');
               },
               child: const Text('No Where'),
             ),
