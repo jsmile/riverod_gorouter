@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverod_gorouter/src/config/router/auth_state_provider.dart';
 import 'package:riverod_gorouter/src/pages/first_page.dart';
 import 'package:riverod_gorouter/src/pages/page_not_found.dart';
 import 'package:riverod_gorouter/src/pages/second_details_page.dart';
@@ -20,8 +21,25 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
 GoRouter router(RouterRef ref) {
+  final authState = ref.watch(authStateProvider);
+
   return GoRouter(
     navigatorKey: _navigatorKey,
+    redirect: (context, state) {
+      final authenticated = authState;
+      // final tryingSignin = state.matchedLocation == '/signin';
+      // final tryingSignup = state.matchedLocation == '/signup';
+      final tryingSignin = state.matchedLocation == RouterNames.signin;
+      final tryingSignup = state.matchedLocation == RouterNames.signup;
+      final authenticating = tryingSignin || tryingSignup;
+
+      if (!authenticated) {
+        return authenticating ? null : RouterNames.signin;
+      }
+
+      return null; // pass through to original location
+    },
+    // 경로를 지정하지 않은 authState 의 변화 시 자동으로 지정되는 경로임.
     initialLocation: '/first',
     routes: [
       GoRoute(

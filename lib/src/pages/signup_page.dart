@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../config/router/auth_state_provider.dart';
+import '../config/router/router_names.dart';
 
 class SignupPage extends ConsumerWidget {
   const SignupPage({super.key});
@@ -15,22 +19,30 @@ class SignupPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                ref.read(authStateProvider.notifier).setAuthenticated(true);
+              },
               child: const Text('Sign UP'),
             ),
             const SizedBox(height: 20.0),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.goNamed(RouterNames.signin);
+              },
               child: const Text('Already a member? Sign IN!'),
             ),
             const SizedBox(height: 20.0),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.goNamed(RouterNames.second);
+              },
               child: const Text('Second'),
             ),
             const SizedBox(height: 20.0),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.goNamed(RouterNames.noWhere);
+              },
               child: const Text('No Where'),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverod_gorouter/src/config/router/auth_state_provider.dart';
 
 import '../config/router/router_names.dart';
 
@@ -31,12 +32,17 @@ class ThirdPage extends ConsumerWidget {
             ),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                // 인증된 사용자가 signin 을 선택하면 first 로 이동
+                context.goNamed(RouterNames.signin);
+              },
               child: const Text('Sign In'),
             ),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                ref.read(authStateProvider.notifier).setAuthenticated(false);
+              },
               child: const Text('Sign Out'),
             ),
           ],
