@@ -83,6 +83,7 @@ GoRouter router(RouterRef ref) {
                 builder: (context, state) => const SecondPage(),
                 routes: [
                   GoRoute(
+                      parentNavigatorKey: _navigatorKey, // 일반 GoRouter 적용
                       path: 'details/:id',
                       name: RouterNames.secondDetails,
                       builder: (context, state) {
