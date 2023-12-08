@@ -33,6 +33,10 @@ GoRouter router(RouterRef ref) {
       final tryingSignup = state.matchedLocation == RouterNames.signup;
       final authenticating = tryingSignin || tryingSignup;
 
+      if (authenticated && tryingSignin) {
+        return RouterNames.first;
+      }
+
       if (!authenticated) {
         return authenticating ? null : RouterNames.signin;
       }
