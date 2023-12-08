@@ -19,7 +19,7 @@ class SignupPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FilledButton(
-              onPressed: () {
+              onPressed: () async {
                 ref.read(authStateProvider.notifier).setAuthenticated(true);
               },
               child: const Text('Sign UP'),
