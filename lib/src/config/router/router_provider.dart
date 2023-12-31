@@ -26,7 +26,8 @@ GoRouter router(RouterRef ref) {
   return GoRouter(
     navigatorKey: _navigatorKey,
     redirect: (context, state) {
-      final authenticated = authState;
+      // GoRouter 의 state 가 변할 때마다 호출됨.
+      final authenticated = authState; // 특히 authState 변화 시
       // final tryingSignin = state.matchedLocation == '/signin';
       // final tryingSignup = state.matchedLocation == '/signup';
       final tryingSignin = state.matchedLocation == RouterNames.signin;
@@ -101,21 +102,22 @@ GoRouter router(RouterRef ref) {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/third',
+                path: '/third', // route 시작이라서 '/' 으로 시작함.
                 name: RouterNames.third,
                 builder: (context, state) => const ThirdPage(),
                 routes: [
                   GoRoute(
-                      path: 'details/:id',
+                      path: 'details/:id', // sub route 라서 '/' 으로 시작하지 않음.
                       name: RouterNames.thirdDetails,
                       builder: (context, state) {
-                        final id = state.pathParameters['id']!;
+                        final id =
+                            state.pathParameters['id']!; // pathParameters
                         final firstName =
                             state.uri.queryParameters['firstName'] ??
                                 'annoymous';
                         final lastName =
                             state.uri.queryParameters['lastName'] ??
-                                'annoymous';
+                                'annoymous'; // queryparmaeters
                         return ThirdDetailsPage(
                           id: id,
                           firstName: firstName,

@@ -12,7 +12,11 @@ class SecondDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Second Details'),
+        title: const Text(
+          'Second Detail Page',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
       body: Center(
         child: Text(

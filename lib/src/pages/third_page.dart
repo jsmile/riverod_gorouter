@@ -12,7 +12,11 @@ class ThirdPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Third'),
+        title: const Text(
+          'Third Page',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
       body: Center(
         child: Column(

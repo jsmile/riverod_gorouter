@@ -16,7 +16,11 @@ class ThirdDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Third Details'),
+        title: const Text(
+          'Third Detail Page',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
       body: Center(
         child: Text(

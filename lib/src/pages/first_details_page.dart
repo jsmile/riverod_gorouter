@@ -14,7 +14,11 @@ class _FirstDetailsPageState extends State<FirstDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('First Details Page'),
+        title: const Text(
+          'First Detail Page',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
       body: Center(
         child: Column(
