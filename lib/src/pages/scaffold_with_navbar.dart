@@ -16,7 +16,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigationShell, // body 에 StatefulNavigationShell( 경로 ) 지정
+      body: navigationShell, // *** body 에 StatefulNavigationShell( 경로 ) 지정
       bottomNavigationBar: BottomNavigationBar(
         // Here, the items of BottomNavigationBar are hard coded. In a real
         // world scenario, the items would most likely be generated from the
@@ -36,15 +36,12 @@ class ScaffoldWithNavBar extends StatelessWidget {
   /// Navigate to the current location of the branch at the provided index when
   /// tapping an item in the BottomNavigationBar.
   void _onTap(BuildContext context, int index) {
-    // When navigating to a new branch, it's recommended to use the goBranch
-    // method, as doing so makes sure the last navigation state of the
-    // Navigator for the branch is restored.
+    // navigating to a new branch,
+    // in order to make sure the last navigation state of the Navigator for the branch is restored.
     navigationShell.goBranch(
       index,
-      // A common pattern when using bottom navigation bars is to support
-      // navigating to the initial location when tapping the item that is
-      // already active. This example demonstrates how to support this behavior,
-      // using the initialLocation parameter of goBranch.
+      // if initialLocation is true,
+      // this method will navigate to initial location of the active branch
       initialLocation: index == navigationShell.currentIndex,
     );
   }

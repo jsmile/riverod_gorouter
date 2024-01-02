@@ -35,14 +35,17 @@ GoRouter router(RouterRef ref) {
       final tryingSignup = state.matchedLocation == RouterNames.signup;
       final authenticating = tryingSignin || tryingSignup;
 
+      // 인증받은 사용자가 signin 을 요청하면 first 로 이동시킴.
       if (authenticated && tryingSignin) {
         return RouterNames.first;
       }
 
+      // 인증받지 않은 사용자가 signin 또는 singup 요청이 아니면 singin 으로 이동시킴.
       if (!authenticated) {
         return authenticating ? null : RouterNames.signin;
       }
 
+      // 그 이외의 사용자는 요청한 경로로 이동시킴.
       return null; // pass through to original location
     },
     // 경로를 지정하지 않은 authState 의 변화 시 자동으로 지정되는 경로임.
@@ -60,6 +63,7 @@ GoRouter router(RouterRef ref) {
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
+          // NavigationBar 를 포함하고 navigationShell을 body 로 사용하는 Scaffold 페이지를 구성함.
           return ScaffoldWithNavBar(
             navigationShell: navigationShell,
           ); // shell navBar
