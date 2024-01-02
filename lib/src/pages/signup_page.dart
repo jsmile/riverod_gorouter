@@ -20,7 +20,7 @@ class SignupPage extends ConsumerWidget {
           children: [
             FilledButton(
               onPressed: () async {
-                ref.read(authStateProvider.notifier).setAuthenticated(true);
+                ref.read(authStateNotiProvider.notifier).setAuthenticated(true);
               },
               child: const Text('Sign UP'),
             ),

@@ -4,9 +4,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'auth_state_provider.g.dart';
 
 @riverpod
-class AuthState extends _$AuthState {
+class AuthStateNoti extends _$AuthStateNoti {
   @override
   bool build() {
+    // return false
     return ref.read(sharedPreferencesProvider).getBool('auth') ?? false;
   }
 

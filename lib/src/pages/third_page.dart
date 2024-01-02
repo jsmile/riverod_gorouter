@@ -45,7 +45,9 @@ class ThirdPage extends ConsumerWidget {
             const SizedBox(height: 10),
             OutlinedButton(
               onPressed: () async {
-                ref.read(authStateProvider.notifier).setAuthenticated(false);
+                ref
+                    .read(authStateNotiProvider.notifier)
+                    .setAuthenticated(false);
               },
               child: const Text('Sign Out'),
             ),
